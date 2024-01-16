@@ -1,0 +1,9 @@
+/* Pulling RelatedLoan.BalanceAtClosing field. It's hidden in field picker */
+
+var RelatedLoanCount = ev.File.GetCollectionCount("RelatedLoan")
+
+if(RelatedLoanCount>0){
+  var RelatedLoanHistory = ev.File.GetCollectionObject("RelatedLoan",RelatedLoanCount);
+  var balance = RelatedLoanHistory.GetField("BalanceAtClosing")
+  los.SetField("ExtendedFields.SecondarySeniorLienAmount", balance)
+}
