@@ -1,0 +1,9 @@
+/* Pulling RelatedLoan.IntRate field. It's hidden in field picker */
+
+var RelatedLoanCount = ev.File.GetCollectionCount("RelatedLoan")
+
+if(RelatedLoanCount>0){
+  var RelatedLoanHistory = ev.File.GetCollectionObject("RelatedLoan",RelatedLoanCount);
+  var rate = RelatedLoanHistory.GetField("IntRate");
+  los.SetField("ExtendedFields.SecondaryFirstLienRate", rate)
+}
