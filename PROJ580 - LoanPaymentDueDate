@@ -1,0 +1,18 @@
+var LoanPaymentCount = ev.File.GetCollectionCount("LoanPayment")
+
+if (LoanPaymentCount > 0) {
+  var LoanPaymentHistory = ev.File.GetCollectionObject("LoanPayment", LoanPaymentCount);
+  var date = new Date(LoanPaymentHistory.GetField("DueDate"))
+  date.setMonth(date.getMonth()+1)
+  los.SetField("ExtendedFields.LoanPaymentDueDate", date.toLocaleDateString())
+}
+
+else if (los.GetField("Loan.FirstPaymentDate") != null) {
+  los.SetField("ExtendedFields.LoanPaymentDueDate", los.GetField("Loan.FirstPaymentDate"))
+}
+
+else {
+
+  los.SetField("ExtendedFields.LoanPaymentDueDate", null)
+
+}
