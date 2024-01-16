@@ -1,0 +1,8 @@
+/* Pulling ShoppableProvider.Company. It's hidden in field picker. */
+
+var ShoppableProviderCount = ev.File.GetCollectionCount("ShoppableProvider")
+if (ShoppableProviderCount>0){
+ var ShoppableProviderHistory = ev.File.GetCollectionObject("ShoppableProvider", ShoppableProviderCount);
+ var Company = ShoppableProviderHistory.GetField("Company");
+ los.SetField("ExtendedFields.DiscShoppableProvidersCompany", Company)
+}
